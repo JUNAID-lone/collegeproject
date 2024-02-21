@@ -1,0 +1,30 @@
+def add(x,y):
+  return x+y
+
+def subtract(x,y):
+  return x-y
+
+def multiply(x,y):
+  return x*y
+
+def calculator():
+  print("simple calcultor")
+  while True:
+
+    try:
+      num1 = float(input("enter the first numer"))
+      operator = input("enter a number(+,-.*):")
+      num2 = float(input("enter the second number"))
+
+      if operator =="+":
+        print("result:",add(num1,num2))
+      elif operator == '-':
+        print("result:",subtract(num1,num2))
+      elif operator == '*':
+        print("result:",multiply(num1,num2))
+      else:
+        print("invalid operator")
+    except valueError:
+      print("invalide input. please enter a valid number.")
+calculator()
+        
