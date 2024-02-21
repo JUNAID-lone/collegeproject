@@ -1,0 +1,21 @@
+#question no :-2
+#write a python program load data set of csv file into datafram and display 4 cluster using scikit learn libraray  
+import pandas as pd
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("Private_data.csv")
+df.head(4)
+
+# Selecting relevant features
+features = df[["GENERAL MANAGEMENT SCORE (OUT of 50)", "RANK"]]
+
+num_clusters = 4
+kmeans = KMeans(n_clusters=num_clusters, random_state=42)
+df['clusters'] = kmeans.fit_predict(features)
+
+plt.scatter(features["GENERAL MANAGEMENT SCORE (OUT of 50)"], features["RANK"], c=df["clusters"], cmap="rainbow")
+plt.title("Scatter Plot with Clusters")
+plt.xlabel("GENERAL MANAGEMENT SCORE (OUT of 50)")
+plt.ylabel("RANK")
+plt.show()
